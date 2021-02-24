@@ -12,8 +12,11 @@ public class Principal
 //		String os = procController.os();
 //		System.out.println(os);
 
-		String process = "C:\\Windows\\regedit.exe";
-		procController.callProcess(process);
+//		String process = "C:\\Windows\\regedit.exe";
+//		procController.callProcess(process);
+		
+		String process = "TASKLIST /FO TABLE";
+		procController.readProcess(process);
 	}
 
 }

@@ -1,7 +1,11 @@
 package controller;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
+//Método construtor
 public class ProcessosController
 {
 	public ProcessosController()
@@ -9,15 +13,15 @@ public class ProcessosController
 		super();
 	}
 	
-//	Retorne o sistema operacional que está em execução na máquina
+//	Retorna o sistema operacional que está em execução na máquina
 	public String os()
 	{
-/*
- *		Keys utilizados no getProperty
- *			os.name = nome do SO
- *			os.arch = arquitetura do SO
- *			os.version = versão do SO
- */
+
+//		Keys utilizados no getProperty
+//			os.name = nome do SO
+//			os.arch = arquitetura do SO
+//			os.version = versão do SO
+		
 		String os = System.getProperty("os.name");
 		String arch = System.getProperty("os.arch");
 		String version = System.getProperty("os.version");
@@ -58,8 +62,42 @@ public class ProcessosController
 			}
 			else
 			{
-				e.printStackTrace();
+				System.err.println(msgError);
 			}
+		}
+	}
+	
+//	Ler processos tragos da aplicação Java
+	public void readProcess (String process)
+	{
+		try
+		{
+// 			O Runtime trará os dados numa variavel do tipo processo
+//			possibilitando salvarmos numa outra variavel, desta vez do tipo InputStream
+			Process p = Runtime.getRuntime().exec(process);
+			InputStream fluxo = p.getInputStream();
+			
+// 			Conversão da variavel fluxo (saída de console) para string
+// 			e armazenamento em um buffer especial
+			InputStreamReader leitor = new InputStreamReader(fluxo);
+			BufferedReader buffer = new BufferedReader(leitor);
+			
+//			Para lermos e descartarmos a primeira linha do buffer
+			String linha = buffer.readLine();
+			
+			while (linha != null)
+			{
+				System.out.println(linha);
+				linha = buffer.readLine();
+			}
+			
+			buffer.close();
+			leitor.close();
+			fluxo.close();
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
 		}
 	}
 }
