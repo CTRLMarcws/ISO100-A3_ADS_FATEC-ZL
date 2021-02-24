@@ -100,4 +100,34 @@ public class ProcessosController
 			e.printStackTrace();
 		}
 	}
+	
+//	Para encerrar processos
+	public void killProcess(String param)
+	{
+		String cmdPid = "TASKKILL /PID";
+		String cmdNome = "TASKKILL /IM";
+		StringBuffer buffer = new StringBuffer();
+		int pid = 0;
+		
+//		Caso seja número, a variavel pid será preenchida, caso contrario ocorrá uma Exception (NumberFormatException)
+		
+		try
+		{
+			pid = Integer.parseInt(param);
+			buffer.append(cmdPid);
+			buffer.append(" ");
+			buffer.append(pid);
+//			TASKKILL /PID 9999
+		}
+		catch(NumberFormatException e)
+		{
+			buffer.append(cmdNome);
+			buffer.append(" ");
+			buffer.append(param);
+//			TASKKILL /PID XXXXXX
+		}
+		
+		callProcess(buffer.toString());
+		
+	}
 }
