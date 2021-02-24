@@ -8,8 +8,12 @@ public class Principal
 	public static void main(String[] args)
 	{
 		ProcessosController procController = new ProcessosController();
-		String os = procController.os();
 		
-		System.out.println(os);
+//		String os = procController.os();
+//		System.out.println(os);
+
+		String process = "C:\\Windows\\regedit.exe";
+		procController.callProcess(process);
 	}
+
 }
