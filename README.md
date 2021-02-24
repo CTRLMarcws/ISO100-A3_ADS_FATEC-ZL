@@ -8,6 +8,6 @@ Terceira aula de Sistemas Operacionais I em que, com auxilio do Profº Leandro C
 4. Mata processos de acordo com o nome ou PID informado.
 
 A aplicação foi criada para ser executada no SO Windows. Para uma aplicação semelhante que rode tanto em Linux quanto em Windows, utilize os links abaixo:
-* [Tarefa 1 - Em breve](https://github.com/404)
+* [Tarefa 1](https://github.com/CTRLMarcws/ISO100-T1_ADS_FATEC-ZL)
 * [Tarefa 2 - Em breve](https://github.com/404)
 * [Tarefa 3 - Em breve](https://github.com/404)
